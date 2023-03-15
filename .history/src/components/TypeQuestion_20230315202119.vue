@@ -116,12 +116,10 @@ export default {
       pyro.style.display = 'none'
     },
     getCorrect () {
-      let key = this.questionId.correct
-      console.log(this.questionId.correct)
-      let t = '\n      ' + key + '\n     '
       const temp = document.querySelectorAll('.gener')
       temp.forEach((e) => {
         e.addEventListener('click', () => {
+          let t = '\n      ' + this.questionId.correct + '\n    '
           for (let i = 0; i < temp.length; i++) {
             temp[i].style.background = 'darkcyan'
           }
@@ -136,7 +134,7 @@ export default {
     },
     getQuestion: function ($id) {
       axios
-        .get('http://localhost:8080/public/api/type/' + $id)
+        .get('http://game-question.rf.gd/public/api/type/' + $id)
         .then((response) => (this.question = response.data))
       this.typeId = $id
       const type = document.querySelector('.type-question')
@@ -151,10 +149,10 @@ export default {
     },
     getQuestionById: function ($id, index, type) {
       axios
-        .get('http://localhost:8080/public/api/home/' + $id)
+        .get('http://game-question.rf.gd/public/api/home/' + $id)
         .then((response) => (this.questionId = response.data))
       axios
-        .get('http://localhost:8080/public/api/player')
+        .get('http://game-question.rf.gd/public/api/player')
         .then((response) => (this.player = response.data))
       this.idQuestion = $id
       const allQuestion = document.querySelector('.item-ques')
@@ -183,7 +181,7 @@ export default {
             if (this.check === true) {
               axios
                 .post(
-                  'http://localhost:8080/public/api/point/' +
+                  'http://game-question.rf.gd/public/api/point/' +
                     this.player[0].id,
                   {
                     point: this.player[0].point + 10,
@@ -216,7 +214,7 @@ export default {
             } else {
               axios
                 .post(
-                  'http://localhost:8080/public/api/point/' +
+                  'http://game-question.rf.gd/public/api/point/' +
                     this.player[0].id,
                   {
                     point: this.player[0].point,
@@ -241,15 +239,15 @@ export default {
   },
   created () {
     axios
-      .get('http://localhost:8080/public/api/type')
+      .get('http://game-question.rf.gd/public/api/type')
       .then((response) => (this.typeQuestion = response.data))
     axios
-      .get('http://localhost:8080/public/api/player')
+      .get('http://game-question.rf.gd/public/api/player')
       .then((response) => (this.player = response.data))
   },
   mounted () {
     axios
-      .get('http://localhost:8080/public/api/player')
+      .get('http://game-question.rf.gd/public/api/player')
       .then((response) => (this.scorePlayer = response.data))
   }
 }
