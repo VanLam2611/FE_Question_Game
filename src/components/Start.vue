@@ -83,7 +83,7 @@ export default {
     },
     addHighScore () {
       axios
-        .get('http://localhost:8080/public/api/score')
+        .get('http://game-question.rf.gd/public/api/score')
         .then((response) => (this.players = response.data))
       const high = document.querySelector('.all-score')
       const start = document.querySelector('.linkApp')
@@ -99,7 +99,7 @@ export default {
       if (person != null) {
         this.nameUser = person
         axios
-          .post('http://localhost:8080/public/api/player', {
+          .post('http://game-question.rf.gd/public/api/player', {
             name: this.nameUser
           })
           .then((res) => {})

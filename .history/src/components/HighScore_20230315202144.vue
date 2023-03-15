@@ -38,7 +38,7 @@ export default {
   methods: {
     getPlayers() {
       axios
-        .get("http://localhost:8080/public/api/score")
+        .get("http://game-question.rf.gd/public/api/score")
         .then((response) => (this.players = response.data));
       return console.log(this.players);
     },
